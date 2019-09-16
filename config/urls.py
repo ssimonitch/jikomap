@@ -15,8 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path #includeを追記
+from jikomap.models import Customer
+from django.conf.urls import url, include
+from rest_framework import routers , serializers, viewsets
+
+
+class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ('name', 'address', 'lat', 'lng')
+
+
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+
+router = routers.DefaultRouter()
+router.register(r'customer', CustomerViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('jikomap', include('jikomap.urls')), #追加
+    path('jikomap/', include('jikomap.urls')), #追加
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('jikomap/api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     ]

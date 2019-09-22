@@ -6,6 +6,4 @@ db.sqlite3
 /static
 .DS_Store
 .env
-ndb.sqlite3
-n.DS_Store
-nlocal_settings.py
+local_settings.py

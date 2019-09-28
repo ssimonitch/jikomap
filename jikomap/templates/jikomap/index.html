@@ -30,9 +30,6 @@
                     });
                 }
         </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuabWyDykEes-z7LCw3OIE3HnXeVFgzCE&callback=initMap"async defer></script>
-
     </body>
 </html>
 -->
@@ -62,7 +59,6 @@
     <div id="map"></div>
     <script>
       var map;
-
       /**
        * The CenterControl adds a control to the map that recenters the map on
        * Chicago.
@@ -91,7 +87,7 @@
         controlText.style.lineHeight = '38px';
         controlText.style.paddingLeft = '5px';
         controlText.style.paddingRight = '5px';
-        controlText.innerHTML = 'Customer Search';
+        controlText.innerHTML = '交通事故発生個所の表示';
         controlUI.appendChild(controlText);
 
         controlUI.addEventListener('click', function() {
@@ -112,8 +108,8 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 35.681236, lng: 139.767125},
-          zoom: 8
+          center: {lat: 35.736271, lng: 137.936845}, //駒ヶ根駅
+          zoom: 15
         });
 
         var centerControlDiv = document.createElement('div');
@@ -143,8 +139,7 @@
         }
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk6aSWx97NlQrrUVpGDG0w_vRSrVMVjzY&callback=initMap"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk6aSWx97NlQrrUVpGDG0w_vRSrVMVjzY&callback=initMap"async defer></script>
   </body>
 </html>
 <!-- Qiita モロパクリ -->

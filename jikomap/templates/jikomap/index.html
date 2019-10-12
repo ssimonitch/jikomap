@@ -1,40 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html>
-    Google Maps Javascript APIのページからコピー
-    <head>
-        <title>交通安全マップ</title>
-        <meta charset="UTF-8">
-        <style>
-             /* Always set the map height explicitly to define the size of the div
-             element that contains the map. */
-            #map {
-                height: 100%;
-            }
-             /* Optional: Makes the sample page fill the window. */
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="map"></div>
-        <script>
-                var map;
-                    function initMap() {
-                    map = new google.maps.Map(document.getElementById('map'), {
-                        center: {lat: 35.736296, lng: 137.936782},
-                        zoom: 15
-                    });
-                }
-        </script>
-    </body>
-</html>
--->
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -101,9 +64,7 @@
           xhttp.open("GET", "api/customer/?format=json", true);
           xhttp.setRequestHeader("Content-type", "application/json");
           xhttp.send();
-
         });
-
       }
 
       function initMap() {
@@ -117,7 +78,6 @@
 
         centerControlDiv.index = 1;
         map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
       }
 
       function setMarker(customerJson) {
@@ -125,14 +85,14 @@
         for(var i = 0; i < customerJson.length; i++){
 
           var infowindow = new google.maps.InfoWindow({
-            content: customerJson[i].name + ' ' + customerJson[i].address
+            content: customerJson[i].name + '<div></div>' + customerJson[i].address
           });
 
           var marker = new google.maps.Marker({
             position: {lat: Number(customerJson[i].lat), lng: Number(customerJson[i].lng)},
             map: map
           });
-
+          
           marker.addListener('click', function() {
             infowindow.open(map, marker);
           });
@@ -142,5 +102,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk6aSWx97NlQrrUVpGDG0w_vRSrVMVjzY&callback=initMap"async defer></script>
   </body>
 </html>
-<!-- Qiita モロパクリ -->
+<!-- Qiita 参考 -->
 <!-- https://qiita.com/otsukitak/items/073468efb3e2979e2c9a -->
